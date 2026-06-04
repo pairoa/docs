@@ -1,0 +1,25 @@
+# ─────────────────────────────────────────────────────────────
+# ALLOWLIST gitignore (fail-closed). This repo is PUBLIC, so we ignore
+# EVERYTHING by default and explicitly un-ignore only the integration surface.
+# Anything that lands in this folder by mistake — a PRD, BRIEF, CLAUDE.md,
+# AGENTS.md, a real .env, a company-registration doc, an internal runbook —
+# is ignored automatically and can never be committed/published.
+#
+# To add a NEW intended public file, add an explicit `!/path` line below.
+# ─────────────────────────────────────────────────────────────
+/*
+
+# the only things allowed in this public repo:
+!/.gitignore
+!/README.md
+!/openapi.yaml
+!/LICENSE
+!/examples/
+/examples/*
+!/examples/*.md
+
+# extra belt-and-suspenders: even if un-ignored above, never these
+.env
+.env.*
+*.pem
+*.key
