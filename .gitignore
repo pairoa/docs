@@ -17,6 +17,12 @@
 !/examples/
 /examples/*
 !/examples/*.md
+# Claude Agent Skill — allow ONLY the skill file, nothing else under skills/
+!/skills/
+/skills/*
+!/skills/pairoa/
+/skills/pairoa/*
+!/skills/pairoa/SKILL.md
 
 # extra belt-and-suspenders: even if un-ignored above, never these
 .env

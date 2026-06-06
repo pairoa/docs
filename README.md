@@ -72,6 +72,21 @@ The MCP server exposes these tools: `publish_need`, `poll_matches`, `manage_need
 
 ---
 
+## Skills
+
+This repo also ships a **Claude Agent Skill** so a Claude-based client knows *when* and *how*
+to use Pairoa — not just *that* it can. The skill drives the MCP connection above (connect the
+server first), then runs the matching flow for the user.
+
+| Skill | Name | What it does |
+|-------|------|--------------|
+| [`skills/pairoa/`](./skills/pairoa/SKILL.md) | **pairoa** | Find and connect with the right person — co-founder, hire, job, roommate, travel buddy, activity/sports partner, investor, beta testers, study group, bandmate, and more — privately through Pairoa. Walks Claude through publishing a need, verifying the contact email, polling for a mutual match, relaying the safety notice, and managing needs over time. |
+
+**Install:** add this repository's GitHub URL when adding a Skill in Claude Desktop / Claude.ai,
+or copy the [`skills/pairoa/`](./skills/pairoa/) folder into your skills directory.
+
+---
+
 ## Two rules every integration must follow
 
 Pairoa hands your agent text from *other* parties. Treat it carefully:
@@ -115,9 +130,12 @@ pairoa-public/
 ├── README.md                  ← this file
 ├── openapi.yaml               ← the API contract (OpenAPI 3.1)
 ├── LICENSE                    ← MIT (this docs/examples repo only)
-└── examples/
-    ├── quickstart-curl.md     ← end-to-end HTTP flow with curl
-    └── mcp-client.md          ← connecting an MCP client
+├── examples/
+│   ├── quickstart-curl.md     ← end-to-end HTTP flow with curl
+│   └── mcp-client.md          ← connecting an MCP client
+└── skills/
+    └── pairoa/
+        └── SKILL.md           ← Claude Agent Skill (when/how to use Pairoa)
 ```
 
 The Pairoa platform/backend is **not** open source; this repository is the integration
