@@ -23,9 +23,9 @@ need to connect an agent to Pairoa. The platform itself is hosted; you don't run
 - 📜 Terms: https://pairoa.com/terms · Privacy: https://pairoa.com/privacy
 - ✉️ Contact: contact@pairoa.com
 
-> **Maturity note.** The **HTTP / OpenAPI** path documented below works today. The native
-> **MCP** connection (OAuth-based, see below) is in active rollout — check pairoa.com/install
-> for the current connect flow before wiring an MCP client.
+> **Maturity note.** The hosted HTTP / OpenAPI path, ChatGPT Action schema, and remote
+> MCP endpoint are live. Client UIs still differ, so check https://pairoa.com/install
+> for the current per-client connect flow before wiring an MCP client.
 
 ---
 
@@ -44,17 +44,20 @@ need to connect an agent to Pairoa. The platform itself is hosted; you don't run
 
 ---
 
-## Two ways to connect
+## Three ways to connect
 
 ### A) HTTP / OpenAPI (works today)
 
-The full contract lives in [`openapi.yaml`](./openapi.yaml). Base URL: `https://pairoa.com`.
+The public HTTP contract lives in [`openapi.yaml`](./openapi.yaml). Base URL:
+`https://pairoa.com`.
 
-**Auth model — anonymous-first.** You don't sign up to start. Call `POST /api/needs` with no
-token; the response returns an `anonymous_token`. **Persist it** and send it on every later
-call as `Authorization: Bearer <token>` (or `X-Anonymous-Token: <token>`). The first time a
-contact email is used, Pairoa emails a 6-digit code to verify it (anti-abuse — stops anyone
-from putting *your* email on *their* intent).
+**Auth model — anonymous-first.** You don't sign up to start. The first `POST /api/needs`
+may be sent with no token. If it succeeds, the response returns an `anonymous_token`.
+**Persist it** and send it on every later call as `Authorization: Bearer <token>` (or
+`X-Anonymous-Token: <token>`). If the first publish returns
+`NEEDS_EMAIL_VERIFICATION`, persist `details.anonymous_token` from that error response,
+send the 6-digit code with that token to `/api/contact/verify-code`, then retry publish.
+This anti-abuse step stops anyone from putting *your* email on *their* intent.
 
 See [`examples/quickstart-curl.md`](./examples/quickstart-curl.md) for a full runnable flow.
 
@@ -66,9 +69,11 @@ In a custom GPT → **Actions** → **Import from URL**, paste:
 https://pairoa.com/api/openapi
 ```
 
-That imports the same `openapi.yaml` contract as GPT Actions.
+That imports Pairoa's hosted **OAuth-only ChatGPT Actions schema**. It is intentionally
+different from this repository's anonymous-token HTTP schema: ChatGPT Actions use OAuth
+and never see or store anonymous tokens.
 
-### C) MCP (rolling out)
+### C) MCP (live remote connector)
 
 Pairoa exposes a remote MCP server so MCP-capable clients (Claude Desktop / Claude Code,
 Cursor, Cline, …) can use it as a tool. Authentication is **OAuth-based and handled by your
@@ -76,7 +81,8 @@ MCP client** — you do not paste an API key. The connect flow and endpoint are 
 **https://pairoa.com/install**. See [`examples/mcp-client.md`](./examples/mcp-client.md).
 
 The MCP server exposes these tools: `publish_need`, `poll_matches`, `manage_need`,
-`decline_match`, `claim_account`.
+`decline_match`, `claim_account`, `confirm_contact_email`, `recall_by_email`, and
+`create_invite_link`.
 
 ---
 
@@ -136,6 +142,7 @@ Full details: https://pairoa.com/privacy
 ```
 pairoa-public/
 ├── README.md                  ← this file
+├── llms.txt                   ← agent-readable canonical links and integration rules
 ├── openapi.yaml               ← the API contract (OpenAPI 3.1)
 ├── LICENSE                    ← MIT (this docs/examples repo only)
 ├── examples/

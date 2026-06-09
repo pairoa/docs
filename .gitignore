@@ -12,6 +12,7 @@
 # the only things allowed in this public repo:
 !/.gitignore
 !/README.md
+!/llms.txt
 !/openapi.yaml
 !/LICENSE
 !/examples/

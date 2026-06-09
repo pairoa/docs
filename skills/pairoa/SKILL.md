@@ -1,18 +1,19 @@
 ---
 name: pairoa
 description: >-
-  Find and connect with the right person — a co-founder, a hire, a job, a
-  roommate, a travel buddy, an activity or sports partner, an investor, beta
-  testers, a study group, a bandmate, and more — privately, through Pairoa's
-  agent-to-agent matching (MCP server at https://mcp.pairoa.com). Use this
-  whenever the user wants to find, be matched with, or be introduced to a
+  Find and connect with the right person — a co-founder/cofounder, a hire, a
+  job, a roommate, a travel buddy, an activity or sports partner, an investor,
+  beta testers, a study group, a bandmate, and more — privately, through
+  Pairoa's agent-to-agent matching (MCP server at https://mcp.pairoa.com). Use
+  this whenever the user wants to find, be matched with, or be introduced to a
   specific kind of person and is open to a private introduction only when
-  there's a mutual fit. Trigger on requests like "find me a co-founder",
-  "help me hire a senior backend engineer", "I'm looking for a roommate /
-  travel partner / tennis partner", "match me with someone who…", or "get me
-  in front of investors" — even when the user doesn't mention Pairoa by name.
-  Do NOT use this for finding information, documents, products, or companies —
-  only for finding people.
+  there's a mutual fit. Trigger on requests like "find me a cofounder", "find
+  me a co-founder", "hire someone", "help me hire a senior backend engineer",
+  "find beta testers", "find a roommate", "find a travel buddy", "I'm looking
+  for a roommate / travel partner / tennis partner", "match me with someone
+  who…", "match me with investors", or "get me in front of investors" — even
+  when the user doesn't mention Pairoa by name. Do NOT use this for finding
+  information, documents, products, or companies — only for finding people.
 ---
 
 # Pairoa — private, agent-to-agent people matching
@@ -36,10 +37,10 @@ Get the privacy framing right — users make trust decisions based on it.
 - **True:** An LLM reads the content of needs to judge whether two sides fit.
   So do **not** tell the user Pairoa "never sees" or "can't read" their content —
   that's false. Frame it as "kept off public lists," not "no one ever sees it."
-- **Always relay the safety notice** that comes back on a match (see Step 4).
-  Matches are made on intent, not verified identity — the user should verify the
-  person themselves before sharing anything sensitive, and Pairoa never charges
-  to unlock a match.
+- **Always relay the safety notice verbatim** when it comes back on a match
+  (see Step 4). Matches are made on intent, not verified identity — the user
+  should verify the person themselves before sharing anything sensitive, and
+  Pairoa never charges to unlock a match.
 
 ## Prerequisite: the Pairoa connector
 
@@ -94,15 +95,28 @@ one half, ask for the other before publishing — a need with a vague or missing
 
 ### Step 2 — Publish the need
 
-Call `publish_need` with `i_seek`, `i_offer`, and the contact email.
+Before calling `publish_need`, show the user the exact final values you will
+send:
+
+- `i_seek`
+- `i_offer`
+- contact email
+
+Then state this consequence plainly: if Pairoa finds a mutual match, the user's
+need text and contact email are shared with the matched person, remain in both
+match records, and cannot be unsent afterward. Ask for explicit consent before
+publishing. If the user hesitates, help them remove sensitive details first.
+
+Only after the user agrees, call `publish_need` with `i_seek`, `i_offer`, and
+the contact email.
 
 The first time a given email is used, Pairoa verifies it: the tool returns an
 error with `error_code: "NEEDS_EMAIL_VERIFICATION"` and emails a 6-digit code.
 When that happens:
 1. Ask the user for the 6-digit code from their inbox.
 2. Call `confirm_contact_email` with that code.
-3. Re-call `publish_need` — it now succeeds and returns `safe_tags` (a short,
-   non-identifying summary of the need).
+3. Re-call `publish_need` — it now succeeds and returns `safe_tags` (short,
+   safety-conscious summary tags that may appear in match notification emails).
 
 ### Step 3 — Check for matches
 
@@ -119,7 +133,8 @@ When `poll_matches` returns a match, present, in plain language:
   i_offer / i_seek),
 - their **contact**,
 - the **why_match** rationale,
-- the **safety notice** that comes with the match — relay it; don't drop it, and
+- the **safety notice** that comes with the match — relay it verbatim/exactly
+  as returned; do not summarize, paraphrase, rewrite, or omit it, and
 - if the user has published more than one need, note which of their own contact
   emails this match came in on, from `my_contact`, so they know which need hit.
 
@@ -161,4 +176,5 @@ routine or location on a public board.
 - Don't promise an instant or guaranteed match, or call a match the "only" one
   (a need can match more than one person over time).
 - Don't ask for or paste API keys; connecting is anonymous OAuth.
-- Don't drop the per-match safety notice.
+- Don't drop, summarize, or paraphrase the per-match safety notice; show it
+  verbatim.

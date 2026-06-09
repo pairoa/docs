@@ -20,15 +20,45 @@ curl -sS -X POST https://pairoa.com/api/needs \
 
 **First-time email verification.** If this email has not been used before, you get
 `409` with `error_code: "NEEDS_EMAIL_VERIFICATION"` and a 6-digit code is emailed to it.
-Verify, then retry step 1:
+That error includes `details.anonymous_token`. Store it before verifying:
+
+```json
+{
+  "ok": false,
+  "error_code": "NEEDS_EMAIL_VERIFICATION",
+  "message": "To confirm you own this contact email...",
+  "details": {
+    "contact_email": "you@example.com",
+    "anonymous_token": "pairoa_xxx..."
+  }
+}
+```
+
+Verify with that token, then retry step 1 with the same token:
 
 ```bash
+TOKEN="pairoa_xxx..."
 curl -sS -X POST https://pairoa.com/api/contact/verify-code \
+  -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{ "email": "you@example.com", "code": "123456" }'
 ```
 
-**On success (`201`)** you receive — among other fields — your token. Persist it:
+```bash
+curl -sS -X POST https://pairoa.com/api/needs \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "i_seek": "A technical cofounder for an AI devtools startup, based in or near EU time zones.",
+    "i_offer": "I am a non-technical founder with early users and design skills; I can lead product and partnerships.",
+    "contact": { "email": "you@example.com" }
+  }'
+```
+
+**On success (`201`)** the need is live. If the first publish did not hit email
+verification, the success body includes an `anonymous_token`; persist it. If you
+already received `details.anonymous_token` from the verification error above, keep using
+that same token — the retry success may omit it.
 
 ```json
 {
