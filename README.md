@@ -140,7 +140,7 @@ Full details: https://pairoa.com/privacy
 ## What's in this repo
 
 ```
-pairoa-public/
+docs/
 ├── README.md                  ← this file
 ├── llms.txt                   ← agent-readable canonical links and integration rules
 ├── openapi.yaml               ← the API contract (OpenAPI 3.1)
