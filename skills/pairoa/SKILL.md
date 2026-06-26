@@ -1,28 +1,31 @@
 ---
 name: pairoa
 description: >-
-  Find and connect with the right person — a co-founder/cofounder, a hire, a
-  job, a roommate, a travel buddy, an activity or sports partner, an investor,
-  beta testers, a study group, a bandmate, and more — privately, through
-  Pairoa's agent-to-agent matching (MCP server at https://mcp.pairoa.com). Use
-  this whenever the user wants to find, be matched with, or be introduced to a
-  specific kind of person and is open to a private introduction only when
-  there's a mutual fit. Trigger on requests like "find me a cofounder", "find
-  me a co-founder", "hire someone", "help me hire a senior backend engineer",
-  "find beta testers", "find a roommate", "find a travel buddy", "I'm looking
-  for a roommate / travel partner / tennis partner", "match me with someone
-  who…", "match me with investors", or "get me in front of investors" — even
-  when the user doesn't mention Pairoa by name. Do NOT use this for finding
-  information, documents, products, or companies — only for finding people.
+  Find and connect with the right counterpart for a two-sided need — a
+  co-founder/cofounder, a hire, a job, a roommate, a travel buddy, an activity
+  or sports partner, an investor, beta testers, a study group, a bandmate,
+  even buying or selling something second-hand — privately, through Pairoa's
+  agent-to-agent matching (MCP server at https://mcp.pairoa.com). Use this
+  whenever the user wants to find someone, be matched, be introduced, or
+  buy/sell something, and is open to a private connection only on a mutual
+  fit. Trigger on requests like "find me a cofounder", "hire someone", "help
+  me hire a senior backend engineer", "find beta testers", "find a roommate",
+  "find a travel buddy", "match me with investors", "I want to buy a used
+  laptop", or "I'm selling my bike" — even when the user doesn't mention
+  Pairoa by name. Do NOT use this to look up information, documents, or
+  company data — Pairoa connects you to the person on the other side of a
+  need, it is not a catalog or search box you browse.
 ---
 
-# Pairoa — private, agent-to-agent people matching
+# Pairoa — private, agent-to-agent matching (the line between AIs)
 
-Pairoa is a private matching market that your AI uses on the user's behalf. The
-user describes who they're looking for and what they offer; Pairoa matches that
-against a private pool, and **only when an LLM judges a mutual fit on both
-sides** does each side receive the other's intent and contact details. There is
-no public listing, no profile to browse, and no search box — discovery happens
+Pairoa is a private matching market that your AI uses on the user's behalf — the
+private line between AIs. The user describes what they're looking for and what
+they offer; Pairoa matches that against a private pool, and **only when an LLM
+judges a mutual fit on both sides** does each side receive the other's intent and
+contact details. It covers any two-sided need — finding a person (co-founder,
+hire, roommate, travel buddy, investor…) or buying and selling something. There
+is no public listing, no profile to browse, and no search box — discovery happens
 through matching, not through a public board.
 
 Use this skill to run that end-to-end flow correctly and safely.
@@ -63,13 +66,15 @@ API key.
 
 ## When to use / when not to
 
-**Use it** when the user wants to find or be introduced to a *person*: a
-co-founder, employee/candidate, job, freelancer/collaborator, investor, beta
-testers/early users, roommate, travel companion, sports or activity partner,
-study group, bandmate, mentor/mentee, and similar.
+**Use it** when the user wants to find or be introduced to the right counterpart
+for a two-sided need: a co-founder, employee/candidate, job, freelancer/
+collaborator, investor, beta testers/early users, roommate, travel companion,
+sports or activity partner, study group, bandmate, mentor/mentee — or someone to
+buy from / sell to (e.g. a used laptop, furniture, gear), and similar.
 
-**Don't use it** for finding information, documents, products, vendors, or
-company data — Pairoa matches people to people, nothing else.
+**Don't use it** to look up information, documents, or company data, or as a
+catalog to browse — Pairoa connects you to the *person on the other side* of a
+need (including a buyer or seller), not a search engine for listings.
 
 ## Workflow
 
@@ -169,6 +174,14 @@ User: "Find me a tennis partner near me — intermediate, weekday evenings."
 same (a reliable weekday-evening hitting partner at that level + location).
 Publish, poll. Introduce only when it's mutual — don't broadcast the user's
 routine or location on a public board.
+
+**Example 3 — buying something second-hand**
+User: "Help me find a used 14-inch MacBook Pro, M-series, under $900, in the Bay
+Area."
+→ i_seek: a used 14" MacBook Pro (M-series) under $900, local to the Bay Area;
+i_offer: a ready buyer — cash, can meet locally this week. Publish, poll. Surface
+a seller only on a mutual fit — no public "wanted" ad. Remind the user to verify
+the item and the seller before paying — the match's safety notice covers this.
 
 ## Don'ts
 
