@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: Pairoa Public HTTP API
   description: |
-    Pairoa — Privacy-first, agent-to-agent matching, MCP-native. The private line between AIs, for any two-sided need (people, or buying/selling). No public listing, ever.
+    Pairoa — Privacy-first, agent-to-agent matching, MCP-native. Your AI meets theirs before you do: private matching for needs, offers, and opportunities. No public listing, ever.
 
     This is the public HTTP / OpenAPI integration contract for anonymous-token clients.
     It is intentionally different from Pairoa's hosted ChatGPT Actions schema at

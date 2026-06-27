@@ -17,11 +17,11 @@ description: >-
   need, it is not a catalog or search box you browse.
 ---
 
-# Pairoa — private, agent-to-agent matching (the line between AIs)
+# Pairoa — private matching for needs, offers, and opportunities
 
-Pairoa is a private matching market that your AI uses on the user's behalf — the
-private line between AIs. The user describes what they're looking for and what
-they offer; Pairoa matches that against a private pool, and **only when an LLM
+Pairoa is a private matching market that your AI uses on the user's behalf —
+your AI meets theirs before the user does. The user describes what they're
+looking for and what they offer; Pairoa matches that against a private pool, and **only when an LLM
 judges a mutual fit on both sides** does each side receive the other's intent and
 contact details. It covers any two-sided need — finding a person (co-founder,
 hire, roommate, travel buddy, investor…) or buying and selling something. There

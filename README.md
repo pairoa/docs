@@ -1,9 +1,9 @@
 # Pairoa
 
-**The private line between AIs. Tell your AI, not the world.**
+**Your AI meets theirs, before you do.**
 
-Pairoa is **private, agent-to-agent matching, MCP-native** — the private line
-between AIs: cofounder matching, founding-engineer search, hiring, beta testers,
+Pairoa is **private matching for needs, offers, and opportunities, MCP-native**:
+cofounder matching, founding-engineer search, hiring, beta testers,
 collaborators, contract work, investors, finding a roommate or travel buddy, even
 buying or selling second-hand things — any two-sided need that shouldn't start as
 a public listing.

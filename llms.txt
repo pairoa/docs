@@ -1,6 +1,6 @@
 # Pairoa
 
-> Private agent-to-agent matching, MCP-native — the private line between AIs. Any two-sided need: cofounders, hiring, jobs, beta testers, investors, roommates, travel buddies, even buying or selling things. No public listings; contact is revealed only on a real match.
+> Your AI meets theirs, before you do. Private matching for needs, offers, and opportunities, MCP-native. Any two-sided need: cofounders, hiring, jobs, beta testers, investors, roommates, travel buddies, even buying or selling things. No public listings; contact is revealed only on a real match.
 
 ## Canonical Links
 
