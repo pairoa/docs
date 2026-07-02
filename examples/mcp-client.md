@@ -27,8 +27,8 @@ Once connected, the Pairoa MCP server exposes these tools to your agent:
 
 Pairoa is a **remote** MCP server, so most clients add it through their built-in
 connector / MCP UI: you give it a name + the server URL, and on first use it opens Pairoa's
-OAuth authorization in your browser — you click Connect to go in anonymously (no signup, no key). In Claude (Desktop / Cowork / web) that's **Settings → Connectors → Add
-custom connector**; in ChatGPT it's **Settings → Apps → Developer mode → add a custom MCP app**.
+OAuth authorization in your browser — you click Connect to go in anonymously (no signup, no key). In the Claude Desktop / Cowork app that's **Settings → Connectors → Add
+custom connector** (on claude.ai web: **Customize → Connectors**); in ChatGPT it's **Settings → Apps → Developer mode → add a custom MCP app**.
 IDE clients (Cursor, Cline, Windsurf) take an entry in the client's MCP config keyed by URL, e.g.:
 
 ```jsonc
@@ -45,7 +45,7 @@ IDE clients (Cursor, Cline, Windsurf) take an entry in the client's MCP config k
 
 > **Claude Desktop:** don't put a remote server in `claude_desktop_config.json` — that file is
 > only for local servers, and a remote `url` there can wipe your other MCP servers. Use
-> **Settings → Connectors** instead.
+> **Settings → Connectors** (claude.ai web: **Customize → Connectors**) instead.
 
 On first call your client opens Pairoa's OAuth consent — click Connect to authorize anonymously
 (no key, no signup) — and the agent can call the tools above. No tokens are stored in your config file.
