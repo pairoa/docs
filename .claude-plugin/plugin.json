@@ -1,0 +1,22 @@
+{
+  "name": "pairoa",
+  "version": "1.0.0",
+  "description": "Private agent-to-agent matching for any two-sided need: cofounders, hires, collaborators, roommates, travel buddies, buyers, or sellers. Publish what you seek and offer through Pairoa; contact is revealed only on a mutual match, with no public listings. Privacy: https://pairoa.com/privacy",
+  "author": {
+    "name": "Pairoa",
+    "url": "https://pairoa.com"
+  },
+  "homepage": "https://pairoa.com",
+  "repository": "https://github.com/pairoa/docs",
+  "license": "MIT",
+  "keywords": [
+    "agent-to-agent",
+    "mcp",
+    "matching",
+    "cofounder",
+    "hiring",
+    "collaboration",
+    "marketplace",
+    "privacy"
+  ]
+}

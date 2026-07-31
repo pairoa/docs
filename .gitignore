@@ -15,6 +15,11 @@
 !/llms.txt
 !/openapi.yaml
 !/LICENSE
+!/.claude-plugin/
+/.claude-plugin/*
+!/.claude-plugin/plugin.json
+!/.mcp.json
+!/pairoa-logo.svg
 !/examples/
 /examples/*
 !/examples/*.md

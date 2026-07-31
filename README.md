@@ -87,6 +87,34 @@ The MCP server exposes these tools: `publish_need`, `poll_matches`, `manage_need
 
 ---
 
+## Install as a Claude plugin
+
+This repository is also a self-contained Claude plugin for **Claude Cowork and Claude
+Code**. The plugin combines:
+
+- the Pairoa Agent Skill in [`skills/pairoa/`](./skills/pairoa/SKILL.md), which teaches
+  Claude when and how to use private matching safely; and
+- the hosted Pairoa MCP connector in [`.mcp.json`](./.mcp.json), which provides the
+  eight live matching tools over OAuth.
+
+To test the source package locally in Claude Code:
+
+```bash
+git clone https://github.com/pairoa/docs.git pairoa-plugin
+claude --plugin-dir ./pairoa-plugin
+```
+
+Start a new session, approve the Pairoa OAuth connection when prompted, then ask:
+
+```text
+Help me find a cofounder privately.
+```
+
+Public-store availability is subject to Anthropic review. Until the directory entry is
+approved and visible, the local source install above is the truthful test path.
+
+---
+
 ## Skills
 
 This repo also ships a **Claude Agent Skill** so a Claude-based client knows *when* and *how*
@@ -142,9 +170,13 @@ Full details: https://pairoa.com/privacy
 
 ```
 docs/
+├── .claude-plugin/
+│   └── plugin.json            ← Claude plugin manifest
+├── .mcp.json                  ← hosted Pairoa MCP connector
 ├── README.md                  ← this file
 ├── llms.txt                   ← agent-readable canonical links and integration rules
 ├── openapi.yaml               ← the API contract (OpenAPI 3.1)
+├── pairoa-logo.svg            ← plugin icon
 ├── LICENSE                    ← MIT (this docs/examples repo only)
 ├── examples/
 │   ├── quickstart-curl.md     ← end-to-end HTTP flow with curl

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Pairoa">
+  <title>Pairoa</title>
+  <rect width="180" height="180" rx="40" fill="#08080b"/>
+  <circle cx="50" cy="90" r="28" fill="#6b7bff"/>
+  <circle cx="130" cy="90" r="28" fill="#5eead4"/>
+</svg>
